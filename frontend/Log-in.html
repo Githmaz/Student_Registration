@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Sign In</title>
+  <link rel="stylesheet" href="CSS/Log-in.css" />
+</head>
+<body>
+  <img src="assets/Background-Log-in.jpeg" alt="background" class="background pic ">
+  <header> 
+    <ul class="navbar">
+      <li class="logo"><img src="assets/Nav-bar-Logo.png" alt="logo"></li>
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="Log-in.html">Sign In</a></li>
+      <li><a href="Sign-up.html">Sign Up</a></li>
+      <li><a href="Student-List.html">Table</a></li>
+  </ul>
+  </header>
+
+  <div class="alert" id="alert">
+    <span class="btn-close"  id="btn-alert-close">&times;</span> 
+    <div class="alertContext" id="alertContext"> </div> 
+  </div>
+
+  <section class="container">
+    <header>Sign In</header>
+    <form class="form" id="form" >
+
+      <!-- Account username password -->
+      <div>
+        <div class="input-box">
+          <label for="usernameInput">Username</label>
+          <input type="text" id="usernameInput" placeholder="Username" required />
+          <p id="usernameAvailability"></p>
+        </div>    
+    
+        <div class="input-box">
+          <label for="passwordInput">Password</label>
+          <input type="password" id="passwordInput" placeholder="Enter the Password" required />
+        </div>                                                                          
+        <p class="create-account-link">Don't have an account? <a href="Sign-up.html">Create Account</a></p>
+      <button type="submit">Sign in</button>
+
+    </form>
+  </section>
+  <script src="JS/Log-in.js"></script>
+</body>
+</html>

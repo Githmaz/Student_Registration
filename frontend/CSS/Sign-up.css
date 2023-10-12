@@ -1,0 +1,257 @@
+/* Styles for the navigation bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 111, 0.8);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 60px;
+  backdrop-filter: blur(1px);
+  z-index: +1;
+
+}
+
+/* Navigation bar links */
+.navbar li {
+  display: inline;
+}
+.navbar .logo img {
+  height: 55px;
+  width: 50px; 
+}
+
+.navbar li:first-child {
+  margin-right: auto;
+  position: relative;
+  left: -10px;
+}
+
+.navbar li a {
+  display: block;
+ color:white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 120%;
+}
+
+/* On hover, the links will change color */
+.navbar li a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  background-image: linear-gradient(135deg, #993366 10%, #061161 100%);
+}
+
+.background {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+/* alert */
+.alert {
+ 
+  display: none;
+  width: 680px;
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  position: fixed;
+  top: 50px;
+  font-size: 1.3rem;
+  border-radius: 6px;
+  z-index: 1;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.alertContext{
+  font-size: 1.2rem;
+}
+.btn-close {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 1.5rem;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.Account-log-in{
+  display: flex;
+}
+.left-side{
+  margin-top: 15px;
+  width: 50%;
+}
+.right-side{
+   margin-top: 25px;
+}
+
+/* profile pic */
+
+#profilePicInput{
+  height: auto;
+  display: none;
+}
+.custom-input {
+  display: inline-block;
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.custom-input:hover {
+  background-color: #29b946;
+}
+
+
+#profilePicPreview {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin-top: 5px;
+  object-fit: cover;
+  text-align: center;
+}
+h4 {
+  color: #061161;
+  font-size: 22px;
+  margin-top: 30px;
+  border-bottom: 2px solid #061161;
+  padding-bottom: 5px;
+}
+
+/* Styles for the container */
+.container {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+}
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-size: 50px;
+  font-weight: 500;
+  text-align: center;
+}
+.container .form {
+  margin-top: 30px;
+}
+
+/* Styles for the form elements */
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+.input-box label {
+  color: #333;
+  font-size: 18px;
+}
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 18px;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+
+/* Button styles */
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #3498db;
+}
+.form button:hover {
+  background: rgb(88, 56, 250);
+}
+.create-account-link {
+  text-align: center;
+  margin-top: 20px;
+  color: #707070;
+  font-size: 20px;
+}
+
+.create-account-link a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.create-account-link a:hover {
+  text-decoration: underline;
+}
+/* Responsive styles for smaller screens */
+@media screen and (max-width: 500px) {
+  .form .column {
+    flex-wrap: wrap;
+  }
+  .Account-log-in{
+    flex-wrap: wrap;
+  }
+}
