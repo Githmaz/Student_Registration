@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -66,11 +63,6 @@ public class StudentController {
 
     //------------------- List all students -------------------//
     @GetMapping("/List")
-    public List<Student> table() {
-        return service.getAllUsers();
-    }
-
-    @GetMapping("/List1")
     public StudentResponse table1() {
         return  StudentResponse.builder()
                 .studentList(service.getAllUsers())
