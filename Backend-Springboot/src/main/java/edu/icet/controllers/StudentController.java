@@ -1,6 +1,7 @@
 package edu.icet.controllers;
 
 import edu.icet.dto.Student;
+import edu.icet.dto.response.StudentResponse;
 import edu.icet.service.StudentService;
 import edu.icet.utility.StudentUtility;
 import lombok.extern.slf4j.Slf4j;
@@ -67,6 +68,13 @@ public class StudentController {
     @GetMapping("/List")
     public List<Student> table() {
         return service.getAllUsers();
+    }
+
+    @GetMapping("/List1")
+    public StudentResponse table1() {
+        return  StudentResponse.builder()
+                .studentList(service.getAllUsers())
+                .build();
     }
 
     //---------------- Get profile picture ---------------------//
