@@ -215,11 +215,11 @@ form.addEventListener("submit",  async (event) => {
             })
         })
         .then(response=>response.json())
-        .then(data => {
+        .then(response => {
             const selectedFile = profilePicInput.files[0];
             const formData = new FormData();
             formData.append('image', selectedFile);
-            return fetch(`http://localhost:8080/Student/SetProfilePic?id=${data}`, {
+            return fetch(`http://localhost:8080/Student/SetProfilePic?id=${response.studentId}`, {
                 method: "POST",
                 body: formData
             })

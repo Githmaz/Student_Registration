@@ -15,11 +15,11 @@ let table = `   <thead>
 fetch("http://localhost:8080/Student/List")
   .then(response => response.json())
   .then(json => {
-    if (json.length === 0) {
+    if (json.studentList.length === 0) {
       studentList.innerHTML = `<div> No students found </div>`;
     } else {
-      const promises = json.map(element => {
-        return fetch(`http://localhost:8080/Student/Image?id=${element.id}`)
+      const promises = json.studentList.map(student => {
+        return fetch(`http://localhost:8080/Student/Image?id=${student.id}`)
           .then(response => response.blob())
           .then(blob => {
             if (blob.size === 0) {
@@ -33,15 +33,15 @@ fetch("http://localhost:8080/Student/List")
       Promise.all(promises)
         .then(imgUrls => {
           let updatedTable = `<tbody>`;
-          json.forEach((element, index) => {
+          json.studentList.forEach((student, index) => {
             const imgUrl = imgUrls[index];
             updatedTable += `<tr class="student-row">
-              <td>${element.id}</td>
+              <td>${student.id}</td>
               <td> <img id="profilePicPreview" src="${imgUrl}" alt="Preview"/></td>
-              <td>${element.firstName + " " + element.lastName}</td>
-              <td>${element.birthday}</td>
-              <td>${element.email}</td>
-              <td>${element.guardian.firstName + " " + element.guardian.lastName}</td>
+              <td>${student.firstName + " " + student.lastName}</td>
+              <td>${student.birthday}</td>
+              <td>${student.email}</td>
+              <td>${student.guardian.firstName + " " + student.guardian.lastName}</td>
             </tr>`;
           });
 

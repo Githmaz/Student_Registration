@@ -50,7 +50,7 @@ public class StudentServiceImpl implements StudentService {
         List<Student> studentList = new ArrayList<>();
 
         for (StudentEntity studentEntity : studentEntities) {
-            studentList.add(new Student(studentEntity.getStudentId(), studentEntity.getFirstName(), studentEntity.getLastName(), studentEntity.getUserName(), studentEntity.getEmail(),studentEntity.getPhoneNumber(),studentEntity.getAddress(), null, studentEntity.getBirthday(),new Guardian(studentEntity.getGuardian().getGuardianId(),studentEntity.getGuardian().getFirstName(),studentEntity.getGuardian().getLastName(),studentEntity.getGuardian().getPhoneNumber(),studentEntity.getGuardian().getCareer()),new ProfilePic(studentEntity.getProfilePic().getProfilePicID(),studentEntity.getProfilePic().getName(),studentEntity.getProfilePic().getType(), ProfilePicUtility.decompressImage(studentEntity.getProfilePic().getImage()))));
+            studentList.add(new Student(studentEntity.getStudentId(), studentEntity.getFirstName(), studentEntity.getLastName(), studentEntity.getUserName(), studentEntity.getEmail(),studentEntity.getPhoneNumber(),studentEntity.getAddress(), null, studentEntity.getBirthday(),new Guardian(studentEntity.getGuardian().getGuardianId(),studentEntity.getGuardian().getFirstName(),studentEntity.getGuardian().getLastName(),studentEntity.getGuardian().getPhoneNumber(),studentEntity.getGuardian().getCareer()),null)); //  new ProfilePic(studentEntity.getProfilePic().getProfilePicID(),studentEntity.getProfilePic().getName(),studentEntity.getProfilePic().getType(), ProfilePicUtility.decompressImage(studentEntity.getProfilePic().getImage()))
         }
 
         return studentList;
