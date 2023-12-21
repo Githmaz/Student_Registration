@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>edu.icet</groupId>
-    <artifactId>Assignment_</artifactId>
+    <artifactId>student-registration-system</artifactId>
     <version>1.0-SNAPSHOT</version>
     <parent>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
