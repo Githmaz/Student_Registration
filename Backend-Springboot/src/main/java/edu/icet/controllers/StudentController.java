@@ -70,7 +70,7 @@ public class StudentController {
 
     //------------------- List all students -------------------//
     @GetMapping("/List")
-    public StudentResponse table1() {
+    public StudentResponse table() {
         return  StudentResponse.builder()
                 .studentList(service.getAllUsers())
                 .build();
