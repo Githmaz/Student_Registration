@@ -1,21 +1,23 @@
 package edu.icet.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.icet.dto.Student;
-import edu.icet.dto.response.StudentResponse;
 import edu.icet.service.StudentService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.MediaType;
 
-import java.util.Arrays;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
+import static org.mockito.Mockito.when;
+
+@ExtendWith(MockitoExtension.class)
 class StudentControllerTest {
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Mock
     private StudentService studentService;
@@ -23,28 +25,40 @@ class StudentControllerTest {
     @InjectMocks
     private StudentController studentController;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
+    private final MockMvc mockMvc = MockMvcBuilders.standaloneSetup(studentController).build();
+
+    @Test
+    void testAddUserSuccess() throws Exception {
+        // Arrange
+        Student mockStudent = new Student(); // You may need to initialize this with relevant data
+        mockStudent.setStudentId(1L);
+
+        when(studentService.addUser(mockStudent)).thenReturn(mockStudent);
+
+        // Act and Assert
+        mockMvc.perform(post("/SignUp")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(mockStudent)))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.Message").value("Student added successfully"))
+                .andExpect(jsonPath("$.studentId").value(1));
     }
 
     @Test
-    void testTable() {
+    void testAddUserFailure() throws Exception {
         // Arrange
-        List<Student> mockStudentList = Arrays.asList(
-                new Student(1, "John", "Doe", "john.doe", "john@example.com", "0123456789", "123 Main St", "password", "2000-01-01", null, null),
-                new Student(2, "Jane", "Doe", "jane.doe", "jane@example.com", "9876543210", "456 Oak St", "password", "1998-05-15", null, null)
-        );
+        Student mockStudent = new Student(); // You may need to initialize this with relevant data
 
-        when(studentService.getAllUsers()).thenReturn(mockStudentList);
+        // Assuming the service method returns null for failure
+        when(studentService.addUser(mockStudent)).thenReturn(null);
 
-        // Act
-        StudentResponse result = studentController.table();
-
-        // Assert
-        assertEquals(mockStudentList, result.getStudentList(), "Student lists should match");
-
-        // Verify that the getAllUsers method is called once
-        verify(studentService, times(1)).getAllUsers();
+        // Act and Assert
+        mockMvc.perform(post("/SignUp")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(mockStudent)))
+                .andExpect(status().isOk()) // Adjust the expected status code for failure
+                .andExpect(jsonPath("$.Message").value("Failed to add student"));
     }
+
+    // Add more test methods for different scenarios if needed
 }
