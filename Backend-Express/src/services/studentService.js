@@ -22,6 +22,46 @@ const db = require('../config/dbconfig')
         }
 
   }
+   //------------------ Soft Delete ------------------//
+  const deleteStudent = async(studentId)=>{
+    try {
+        const [result] = await db.query('UPDATE student SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?',[studentId]);
+        if (result.affectedRows === 0) {
+            return { message: `Student with ID ${studentId.replace(/\n/g, '')} not found`, success: false };
+        }
+        return { message: `Student with ID ${studentId.replace(/\n/g, '')} deleted successfully`, success: true };
+    } catch (error) {
+        console.error('Error:', error);
+        throw new Error('Internal Server Error');
+  } 
+  }
+  //------------------ Permanent Delete ------------------//
+  const deleteStudentPermanently = async (studentId) =>{
+    try {
+        const [result] = await db.query('DELETE FROM student WHERE id = ?', [studentId]);
+        if (result.affectedRows === 0) {
+            return { message: `Student with ID ${studentId.replace(/\n/g, '')} not found`, success: false };
+        }
+        return { message: `Student with ID ${studentId.replace(/\n/g, '')} Permanently Deleted Successfully`, success: true };
+    } catch (error) {
+        console.error('Error:', error);
+        throw new Error('Internal Server Error'); 
+    }
+  }
 
+  const restoreStudent = async (studentId) => {
+    try {
+      const [result] = await db.query('UPDATE student SET deleted_at = NULL WHERE id = ?', [studentId]);
+  
+      if (result.affectedRows === 0) {
+        return { message: `Student with ID ${studentId.replace(/\n/g, '')} not found`, success: false };
+      }
+  
+      return { message: `Student with ID ${studentId.replace(/\n/g, '')} restored successfully`, success: true };
+    } catch (error) {
+      console.error('Error:', error);
+      throw new Error('Internal Server Error');
+    }
+  };
 
-  module.exports = {getAllStudents,addStudnet}
+  module.exports = {getAllStudents,addStudnet,deleteStudent,deleteStudentPermanently,restoreStudent}
