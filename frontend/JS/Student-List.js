@@ -50,14 +50,14 @@ fetch("http://localhost:8080/Student/List")
 
           // Add event listener to every "rows" element
           let rows = document.getElementsByClassName("student-row");
-          for (let i = 0; i < rows.length; i++) {
-            rows[i].addEventListener("click", () => {
-              fetch(`http://localhost:8080/Student/getStudent?id=${rows[i].querySelector("td:first-child").textContent}`)
+          for (const element of rows) {
+            element.addEventListener("click", () => {
+              fetch(`http://localhost:8080/Student/getStudent?id=${element.querySelector("td:first-child").textContent}`)
               .then(response => response.json())
               .then(json =>{
                 card.style.right = '0%';
                 container.style.right = '12.5%';
-                document.getElementById("student-profile-pic").src = rows[i].querySelector("td:nth-child(2) img").src;
+                document.getElementById("student-profile-pic").src = element.querySelector("td:nth-child(2) img").src;
                 document.getElementById("Student-fullname").textContent = json.firstName + " " + json.lastName;
                 document.getElementById("Student-Phonenumber").textContent = json.phoneNumber;
                 document.getElementById("Student-Birthday").textContent = json.birthday;

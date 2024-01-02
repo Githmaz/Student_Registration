@@ -1,7 +1,7 @@
 const studentResponse = {
-
+      
     sendAllStudents:(res,students)=>{
-        res.status(200).json({StudentList:students });
+        res.status(200).json({studentList:students });
     },
 
     sendSuccess: (res, message) => {

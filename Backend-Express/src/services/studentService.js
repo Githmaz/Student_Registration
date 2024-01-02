@@ -4,7 +4,7 @@ const db = require('../config/dbconfig')
 
     const getAllStudents = async () => {
         try {
-            const [rows] = await db.query('SELECT id, first_name, last_name, age, email, phone_number FROM student WHERE deleted_at IS NULL');
+            const [rows] = await db.query('SELECT * FROM student');
             return rows;
         } catch (error) {
             console.error('Error :', error);
