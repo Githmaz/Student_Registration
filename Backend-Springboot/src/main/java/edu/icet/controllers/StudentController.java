@@ -46,8 +46,7 @@ public class StudentController {
     }
     //---------------- Check phone number -------------------//
     @GetMapping("/CheckPhoneNumber")
-    public boolean checkPhoneNumber(@RequestParam String phoneNumber) {
-        return StudentUtility.checkPhoneNumber(phoneNumber);
+    public boolean checkPhoneNumber(@RequestParam String phoneNumber) {return StudentUtility.checkPhoneNumber(phoneNumber);
     }
 
     //---------------- Check duplicate username -------------//
