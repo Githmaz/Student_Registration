@@ -1,12 +1,4 @@
 spring:
-  datasource:
-    url : jdbc:mysql://localhost:3306/studentDB
-    username: root
-    password: Zandaru1
-  jpa:
-    hibernate:
-      ddl-auto: update
-
-
-
+  profiles:
+    active: dev
 
