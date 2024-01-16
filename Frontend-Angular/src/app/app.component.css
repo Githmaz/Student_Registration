@@ -1,0 +1,14 @@
+/* styles.css or your global styles file */
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column; /* Assuming you want a vertical layout */
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
