@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./registration-form.component.css']
 })
 export class RegistrationFormComponent {
+  profilePicture: File | null = null;
 
+  // Event listener for profile picture input change
+  onProfilePicChange(event: any) {
+    this.profilePicture = event.target.files[0];
+  }
+ 
+  getProfilePicUrl(): string {
+    return this.profilePicture ? URL.createObjectURL(this.profilePicture) : 'assets/default-icon2.jpeg';
+  }
 }
