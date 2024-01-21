@@ -7,6 +7,7 @@ import { RegistrationFormComponent } from './components/registration-form/regist
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LogInFromComponent } from './components/log-in-from/log-in-from.component';
 import { TableComponent } from './components/table/table.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,9 +16,12 @@ import { TableComponent } from './components/table/table.component';
     NavBarComponent,
     LogInFromComponent,
     TableComponent,
+    RegistrationFormComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],
