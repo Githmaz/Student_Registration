@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-registration-form',
@@ -10,8 +11,10 @@ export class RegistrationFormComponent implements OnInit {
   registrationForm !: FormGroup;
   profilePicture: File | null = null;
 
-  constructor(private formBuilder: FormBuilder) {}
-
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
+  usernameAvailabilityStatus: string = '';
+  usernameAvailabilityColor: string = '';
+  
   ngOnInit() {
     this.registrationForm = this.formBuilder.group({
       // Account log in info
@@ -21,7 +24,7 @@ export class RegistrationFormComponent implements OnInit {
       // Personal data
       firstName: [''],
       lastName: [''],
-      email: ['', [Validators.required, Validators.email]],
+      email: [''],
       phoneNumber: [''],
       birthDate: [''],
       address: [''],
@@ -38,7 +41,17 @@ export class RegistrationFormComponent implements OnInit {
   onProfilePicChange(event: any) {
     this.profilePicture = event.target.files[0];
   }
-
+  checkUsername(event: any) {
+    const typedValue = event.target.value;
+    this.http.get<boolean>("http://localhost:8080/Student/CheckDuplicateUsername", { params: { username: typedValue } })
+    .subscribe(isDuplicate => {
+      if(true){
+        console.log(isDuplicate)
+      }
+    }, error => {
+      console.error("Error checking username ", error);
+    });
+  }
   getProfilePicUrl(): string {
     return this.profilePicture ? URL.createObjectURL(this.profilePicture) : 'assets/default-icon2.jpeg';
   }

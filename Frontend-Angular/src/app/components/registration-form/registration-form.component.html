@@ -15,7 +15,7 @@
       <div class="right-side">
         <div class="input-box">
           <label for="usernameInput">Username</label>
-          <input type="text" id="usernameInput" placeholder="Username" formControlName="username" required />
+          <input type="text" (input)="checkUsername($event)"  id="usernameInput" placeholder="Username" formControlName="username" required />
           <p id="usernameAvailability"></p>
         </div>
         <div class="input-box">
@@ -24,7 +24,7 @@
         </div>
         <div>
           <label class="custom-input" for="profilePicInput">Select Profile Picture</label>
-          <input type="file" (change)="onProfilePicChange($event)" id="profilePicInput" accept="image/png, image/jpeg, image/jpg" />
+          <input type="file" ((change))="onProfilePicChange($event)" id="profilePicInput" accept="image/png, image/jpeg, image/jpg" />
         </div>
       </div>
     </div>
