@@ -1,0 +1,159 @@
+/* Import Google font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Body styles */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.background {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+/* Styles for the container */
+.container {
+  position: relative;
+  margin: 100px;
+  right: 0%;
+  transition: right 0.8s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center; 
+  height: fit-content;
+  width: 70vw;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 25px;
+  border-radius: 50px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+
+}
+
+.container header {
+  font-size: 2.2rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+#student-List{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 1.4em;
+    font-family: sans-serif;
+    width: 95%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+}
+#student-List thead tr {
+    background-color: #57c3de;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.5m;
+}
+
+th,td {
+    font-size: 1vw;
+    padding: 12px 15px;
+}
+tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+tbody tr:last-of-type {
+    border-bottom: 5px solid #c50303;
+}
+#profilePicPreview {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  text-align: center;
+}
+
+
+
+/* Styles for the student image popup card */
+.student-image-card {
+  overflow-y: scroll;
+  position: fixed;
+  top: 60px;
+  right: -25%;
+  width: 25%;
+  height: 95%;
+  z-index: 1;
+  transition: right 0.8s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+
+#student-profile-pic {
+  margin: 30px auto 30px auto;
+  width: 15vw;
+  height: 15vw;
+  border-radius: 50%;
+  object-fit: cover;
+  text-align: center;
+
+}
+/* Styles for the rows */
+.row {
+  text-align: center;
+  margin: 0 auto 0 auto;
+  display: flex;
+  column-gap: 15px;
+}
+
+/* Style for labels in rows */
+.row label {
+  font-weight: bold;
+  font-size: 110%;
+  margin-top: 35px;
+}
+
+/* Style for content in rows */
+.row p {
+  font-size: 110%;
+  margin: 35px 0 0 0;
+}
+
+#Student-fullname{
+  text-align: center;
+  color: #152389;
+  font-size: 400%;
+  margin: 0 0 35px 0 ;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+h5 {
+  color: #1d2fb3;
+  font-size: 22px;
+  margin-top: 70px;
+  border-bottom: 3px solid #1d2fb3;
+  padding-bottom: 20px;
+}

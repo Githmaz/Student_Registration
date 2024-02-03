@@ -1,0 +1,96 @@
+<section class="container">
+  <header>Registration Form</header>
+  <form class="form" id="form" (ngSubmit)="onSubmit()" [formGroup]="registrationForm" enctype="multipart/form-data">
+
+    <!-- Account log in info -->
+    <h4>Account log in info</h4>
+    <div class="Account-log-in">
+      <div class="left-side">
+        <label class="profilePicInput-lable">Profile Picture</label>
+        <div class="preview">
+          <img id="profilePicPreview" [src]="getProfilePicUrl()" alt="Profile Picture Preview" />
+        </div>
+      </div>
+
+      <div class="right-side">
+        <div class="input-box">
+          <label for="usernameInput">Username</label>
+          <input type="text" (input)="checkUsername($event)"  id="usernameInput" placeholder="Username" formControlName="username" required />
+          <p id="usernameAvailability"></p>
+        </div>
+        <div class="input-box">
+          <label for="passwordInput">Password</label>
+          <input type="password" id="passwordInput" placeholder="Enter the Password" formControlName="password" required />
+        </div>
+        <div>
+          <label class="custom-input" for="profilePicInput">Select Profile Picture</label>
+          <input type="file" ((change))="onProfilePicChange($event)" id="profilePicInput" accept="image/png, image/jpeg, image/jpg" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Personal data -->
+    <div>
+      <h4>Personal data</h4>
+      <div class="column">
+        <div class="input-box">
+          <label for="firstNameInput">First Name</label>
+          <input type="text" id="firstNameInput" placeholder="Enter first name" formControlName="firstName" required />
+        </div>
+        <div class="input-box">
+          <label for="lastNameInput">Last Name</label>
+          <input type="text" id="lastNameInput" placeholder="Enter last name" formControlName="lastName" required />
+        </div>
+      </div>
+      <div class="input-box">
+        <label for="emailInput">Email Address</label>
+        <input type="text" id="emailInput" placeholder="Enter email address" formControlName="email" required />
+      </div>
+      <div class="column">
+        <div class="input-box">
+          <label for="phoneNumberInput">Phone Number</label>
+          <input type="tel" id="phoneNumberInput" placeholder="Enter phone number" formControlName="phoneNumber" required />
+          <p id="phonenumberValidity"></p>
+        </div>
+        <div class="input-box">
+          <label for="birthDateInput">Birth Date</label>
+          <input type="date" id="birthDateInput" placeholder="Enter birth date" formControlName="birthDate" required />
+          <p id="birthdayValidation"></p>
+        </div>
+      </div>
+      <div class="input-box address">
+        <label for="addressInput">Address</label>
+        <input type="text" id="addressInput" placeholder="Enter street address" formControlName="address" required />
+      </div>
+    </div>
+
+    <!-- Guardian data -->
+    <div>
+      <h4>Guardian's data</h4>
+      <div class="column">
+        <div class="input-box">
+          <label for="guardianFirstNameInput">Guardian's First Name</label>
+          <input type="text" id="guardianFirstNameInput" placeholder="Enter the Guardian's first name" formControlName="guardianFirstName" required />
+        </div>
+        <div class="input-box">
+          <label for="guardianLastNameInput">Guardian's Last Name</label>
+          <input type="text" id="guardianLastNameInput" placeholder="Enter the Guardian's last name" formControlName="guardianLastName" required />
+        </div>
+      </div>
+      <div class="column">
+        <div class="input-box">
+          <label for="guardianCareerInput">Guardian's Career</label>
+          <input type="text" id="guardianCareerInput" placeholder="Enter the Guardian's Career" formControlName="guardianCareer" required />
+        </div>
+        <div class="input-box">
+          <label for="guardianPhoneNumberInput">Guardian's Phone Number</label>
+          <input type="number" id="guardianPhoneNumberInput" placeholder="Enter the Guardian's Phone Number" formControlName="guardianPhoneNumber" required />
+          <p id="guardianPhonenumberValidity"></p>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+  <p class="create-account-link">Already have an account? <a href="Log-in.html">Log in</a></p>
+</section>
